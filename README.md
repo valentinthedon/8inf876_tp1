@@ -31,4 +31,4 @@ Cette ensemble fonctionne de facon à ce que seulement un port de notre machine 
 
 Afin que vous puissiez, au mieux comprendre l'architecture de l'application voici, ci-dessous. Il est à noter que dans notre cas notre hôte fait également office de client (aucun passage par Internet), cependant le principe reste le même.
 
-![Schéma d'un échange entre un hôte et l'application](/tp1_8inf876.png)
+![Schéma d'un échange entre un hôte et l'application](/schema_app.png)
