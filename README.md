@@ -29,3 +29,6 @@ Pour réaliser cette application, nous avons utilisé le célèbre service Docke
 
 Cette ensemble fonctionne de facon à ce que seulement un port de notre machine hôte soit exposé (ici le port 80), l'ensemble des communications inter-conteneur est réalisé de manière opaque depuis l'extèrieur, ce qui nous apporte des garanties supplémentaire
 
+Afin que vous puissiez, au mieux comprendre l'architecture de l'application voici, ci-dessous. Il est à noter que dans notre cas notre hôte fait également office de client (aucun passage par Internet), cependant le principe reste le même.
+
+![Schéma d'un échange entre un hôte et l'application](/tp1_8inf876.png)
