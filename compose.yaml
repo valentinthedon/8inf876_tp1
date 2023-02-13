@@ -2,19 +2,19 @@ version: '3'
 
 services:
   web:
-    image: nginx:latest
-    container_name: web
+    image: nginx:latest   # Image correspondant au service
+    container_name: web   # Nomme le conteneur
     ports:
       - 80:80
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./php/index.php:/var/www/html/index.php
-      - ./php/index.css:/var/www/html/index.css
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   # mappage fichier conf nginx
+      - ./php/index.php:/var/www/html/index.php:ro   # mappage des fichiers frontend
+      - ./php/index.css:/var/www/html/index.css:ro
     depends_on:
-      - php
+      - php   # signifie que le service doit etre lancé apres le service php
 
   php:
-    build: ./php
+    build: ./php  # Rebuild de l'image depuis le Dockerfile dans le répertoire php/
     container_name: php
     volumes: 
       - ./php/index.php:/var/www/html/index.php
@@ -23,11 +23,12 @@ services:
   
   db:
     image: mariadb:latest
-    container_name: db
+    container_name: db      
     volumes:
-      - ./mariadb/start.sql:/docker-entrypoint-initdb.d/start.sql
+        #Mappe le fichier start.sql dans le conteneur afin d'executer la creation de la table au démarrage 
+      - ./mariadb/start.sql:/docker-entrypoint-initdb.d/start.sql  
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: 8inf876
-      MYSQL_USER: php 
-      MYSQL_PASSWORD: php_password 
+      MYSQL_ROOT_PASSWORD: root_password    # définit le mot de passe administrateur
+      MYSQL_DATABASE: 8inf876               # créer un base de données à l'initialisation du conteneur 
+      MYSQL_USER: php                       # créer un utilisateur
+      MYSQL_PASSWORD: php_password          # mot de passe de l'utilisateur crée
