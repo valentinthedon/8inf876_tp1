@@ -23,5 +23,9 @@ Pour pouvoir lancer l'application :
 ## Concept
 
 Pour réaliser cette application, nous avons utilisé le célèbre service Docker, qui repose sur des principes de conteneurisation (en gros, de la virtualisation de manière allégé). Pour creer une application de calcul de l'IMC, nous avons identifier 3 services qui seront nécéssaires : 
-* *nginx :* 
+* **nginx :** applicatif permettant de mettre en place en un serveur web.
+* **php-fpm :** ce service nous permet de traiter les réquetes PHP dans le backends, notamment la recpetion et le traitement des formulaires. Vous pourrez noter que nous recréeons une image PHP (via Dockerfile), via l'instruction `build` dans `compose.yaml`, ce aui nous permet de construire une image de PHP, avec l'extensions `mysqli` nécessaire.
+* **mariadb :** conteneur qui contiendra la base de donnée. Dans notre cas, une seule table : imc. Cette table contient, le pseudo, la taille et le poids.
+
+Cette ensemble fonctionne de facon à ce que seulement un port de notre machine hôte soit exposé (ici le port 80), l'ensemble des communications inter-conteneur est réalisé de manière opaque depuis l'extèrieur, ce qui nous apporte des garanties supplémentaire
 
